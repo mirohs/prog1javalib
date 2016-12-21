@@ -28,6 +28,10 @@ import prog1.base.Base;
  * {@code Image} objects. Images may be combined to form other images. 
  * Import as:<br>
  * {@code import static prog1.graphics.Graphics.*;}
+ * 
+ * <br/>This work is strongly inspired by the Racket 
+ * <a href="https://docs.racket-lang.org/teachpack/2htdpimage.html"
+ * target="_blank">image teachpack</a>.
  *
  * @author michaelrohs
  */
