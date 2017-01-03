@@ -15,8 +15,6 @@
  */
 package prog1.graphics;
 
-import javafx.scene.input.MouseEvent;
-
 /**
  * Function that handles mouse events.
  * @author michaelrohs
@@ -25,7 +23,7 @@ public interface MouseFunction {
 
 	/**
 	 * Function that handles mouse events.
-	 * @param event <a href="http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/MouseEvent.html">JavaFX mouse event</a> (methods getX(), getY(), getSceneX(), getSceneY())
+	 * @param event a mouse event
 	 * @param target an arbitrary object that is supplied when registering the click function
 	 */
 	public void apply(MouseEvent event, Object target);

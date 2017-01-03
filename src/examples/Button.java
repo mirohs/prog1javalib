@@ -15,7 +15,6 @@
  */
 package examples;
 
-import javafx.scene.input.MouseEvent;
 import prog1.graphics.*;
 import static prog1.graphics.Graphics.*;
 

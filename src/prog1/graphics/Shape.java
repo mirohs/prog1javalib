@@ -15,7 +15,6 @@
  */
 package prog1.graphics;
 
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
 /**
@@ -55,8 +54,8 @@ abstract class Shape extends Image {
 		if (pressFunction != null) {
 //			System.out.println("Shape.render: pressFunction = " + pressFunction);
 //			System.out.println(Thread.currentThread());
-			s.addEventHandler(MouseEvent.MOUSE_PRESSED, (MouseEvent e) -> {
-				pressFunction.apply(e, pressFunctionTarget);
+			s.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_PRESSED, (javafx.scene.input.MouseEvent e) -> {
+				pressFunction.apply(new MouseEvent(e), pressFunctionTarget);
 				e.consume();
 				ApplicationBase.draw();
 			});
@@ -64,22 +63,22 @@ abstract class Shape extends Image {
 		if (releaseFunction != null) {
 //			System.out.println("Shape.render: releaseFunction = " + releaseFunction);
 //			System.out.println(Thread.currentThread());
-			s.addEventHandler(MouseEvent.MOUSE_RELEASED, (MouseEvent e) -> {
-				releaseFunction.apply(e, releaseFunctionTarget);
+			s.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_RELEASED, (javafx.scene.input.MouseEvent e) -> {
+				releaseFunction.apply(new MouseEvent(e), releaseFunctionTarget);
 				e.consume();
 				ApplicationBase.draw();
 			});
 		}
 		if (moveFunction != null) {
-			s.addEventHandler(MouseEvent.MOUSE_MOVED, (MouseEvent e) -> {
-				moveFunction.apply(e, moveFunctionTarget);
+			s.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_MOVED, (javafx.scene.input.MouseEvent e) -> {
+				moveFunction.apply(new MouseEvent(e), moveFunctionTarget);
 				e.consume();
 				ApplicationBase.draw();
 			});
 		}
 		if (dragFunction != null) {
-			s.addEventHandler(MouseEvent.MOUSE_DRAGGED, (MouseEvent e) -> {
-				dragFunction.apply(e, dragFunctionTarget);
+			s.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_DRAGGED, (javafx.scene.input.MouseEvent e) -> {
+				dragFunction.apply(new MouseEvent(e), dragFunctionTarget);
 				e.consume();
 				ApplicationBase.draw();
 			});

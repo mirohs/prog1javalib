@@ -53,12 +53,12 @@ public class SortingGame extends javafx.application.Application {
 			icon.setOnMousePressed((event, target) -> {
 				Point p = positions[(int)target];
 				pickOffset = new Point(
-						p.x - event.getSceneX(), 
-						p.y - event.getSceneY());
+						p.x - event.x, 
+						p.y - event.y);
 			}, i);
 			icon.setOnMouseDragged((event, target) -> {
-				double x = event.getSceneX() + pickOffset.x;
-				double y = event.getSceneY() + pickOffset.y;
+				double x = event.x + pickOffset.x;
+				double y = event.y + pickOffset.y;
 				positions[(int)target] = new Point(x, y);
 			}, i);
 		}

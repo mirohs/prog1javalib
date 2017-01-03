@@ -18,7 +18,6 @@ package prog1.graphics;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.ObservableList;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.transform.Transform;
 
 /**
@@ -185,31 +184,31 @@ public class Group extends Image {
 //		System.out.println("</Group>");
 		
 		if (pressFunction != null) {
-			jfxNode.addEventHandler(MouseEvent.MOUSE_PRESSED, (MouseEvent e) -> {
+			jfxNode.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_PRESSED, (javafx.scene.input.MouseEvent e) -> {
 //				System.out.println("group press");
-				pressFunction.apply(e, pressFunctionTarget);
+				pressFunction.apply(new MouseEvent(e), pressFunctionTarget);
 				e.consume();
 				ApplicationBase.draw();
 			});
 		}
 		if (releaseFunction != null) {
-			jfxNode.addEventHandler(MouseEvent.MOUSE_RELEASED, (MouseEvent e) -> {
+			jfxNode.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_RELEASED, (javafx.scene.input.MouseEvent e) -> {
 //				System.out.println("group release");
-				releaseFunction.apply(e, releaseFunctionTarget);
+				releaseFunction.apply(new MouseEvent(e), releaseFunctionTarget);
 				e.consume();
 				ApplicationBase.draw();
 			});
 		}
 		if (moveFunction != null) {
-			jfxNode.addEventHandler(MouseEvent.MOUSE_MOVED, (MouseEvent e) -> {
-				moveFunction.apply(e, moveFunctionTarget);
+			jfxNode.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_MOVED, (javafx.scene.input.MouseEvent e) -> {
+				moveFunction.apply(new MouseEvent(e), moveFunctionTarget);
 				e.consume();
 				ApplicationBase.draw();
 			});
 		}
 		if (dragFunction != null) {
-			jfxNode.addEventHandler(MouseEvent.MOUSE_DRAGGED, (MouseEvent e) -> {
-				dragFunction.apply(e, dragFunctionTarget);
+			jfxNode.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_DRAGGED, (javafx.scene.input.MouseEvent e) -> {
+				dragFunction.apply(new MouseEvent(e), dragFunctionTarget);
 				e.consume();
 				ApplicationBase.draw();
 			});

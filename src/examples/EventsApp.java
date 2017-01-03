@@ -15,29 +15,28 @@
  */
 package examples;
 
-import javafx.scene.input.MouseEvent;
 import prog1.base.Base;
 import prog1.graphics.*;
 import static prog1.graphics.Graphics.*;
 
 // Windows:
-// javac -cp .;prog1javalib.jar examples\Events.java
-// java -cp .;prog1javalib.jar examples.Events
+// javac -cp .;prog1javalib.jar examples\EventsApp.java
+// java -cp .;prog1javalib.jar examples.EventsApp
 
 // OS X:
 // javac -cp .:prog1javalib.jar examples/Events.java
-// java -cp .:prog1javalib.jar examples.Events
+// java -cp .:prog1javalib.jar examples.EventsApp
 
 /**
  *
  * @author michaelrohs
  */
-public class Events extends javafx.application.Application {
+public class EventsApp extends javafx.application.Application {
 
 	private String status = "";
 	private double time;
 	
-	public Events() { // initialization
+	public EventsApp() { // initialization
 		// ...
 	}
 
@@ -60,17 +59,17 @@ public class Events extends javafx.application.Application {
 		Image txt = text(s, "Consolas", 24, "black");
 		// set functions to call when the mouse is on the text object:
 		txt.setOnMousePressed((event, target) -> {
-			status = String.format("text: mouse press (%3.0f, %3.0f)", event.getSceneX(), event.getSceneY());
+			status = String.format("text: mouse press (%3.0f, %3.0f)", event.x, event.y);
 			Base.println(status);
 		}, null);
 		txt.setOnMouseReleased((event, target) -> {
-			status = String.format("text: mouse release (%3.0f, %3.0f)", event.getSceneX(), event.getSceneY());
+			status = String.format("text: mouse release (%3.0f, %3.0f)", event.x, event.y);
 			Base.println(status);
 		}, null);
 		txt.setOnMouseMoved((event, target) -> 
-				status = String.format("text: mouse move (%3.0f, %3.0f)", event.getSceneX(), event.getSceneY()), null);
+				status = String.format("text: mouse move (%3.0f, %3.0f)", event.x, event.y), null);
 		txt.setOnMouseDragged((event, target) -> 
-				status = String.format("text: mouse drag (%3.0f, %3.0f)", event.getSceneX(), event.getSceneY()), null);
+				status = String.format("text: mouse drag (%3.0f, %3.0f)", event.x, event.y), null);
 		return txt;
 	}
 	
@@ -86,21 +85,21 @@ public class Events extends javafx.application.Application {
 	}
 
 	private void onMousePress(MouseEvent event, Object target) {
-		status = String.format("mouse press (%3.0f, %3.0f)", event.getSceneX(), event.getSceneY());
+		status = String.format("mouse press (%3.0f, %3.0f)", event.x, event.y);
 		Base.println(status);
 	}
 
 	private void onMouseRelease(MouseEvent event, Object target) {
-		status = String.format("mouse release (%3.0f, %3.0f)", event.getSceneX(), event.getSceneY());
+		status = String.format("mouse release (%3.0f, %3.0f)", event.x, event.y);
 		Base.println(status);
 	}
 
 	private void onMove(MouseEvent event, Object target) {
-		status = String.format("mouse move (%3.0f, %3.0f)", event.getSceneX(), event.getSceneY());
+		status = String.format("mouse move (%3.0f, %3.0f)", event.x, event.y);
 	}
 
 	private void onDrag(MouseEvent event, Object target) {
-		status = String.format("mouse drag (%3.0f, %3.0f)", event.getSceneX(), event.getSceneY());
+		status = String.format("mouse drag (%3.0f, %3.0f)", event.x, event.y);
 	}
 	
 	private void onTick(double time) {

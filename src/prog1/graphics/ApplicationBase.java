@@ -19,7 +19,6 @@ import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -87,20 +86,20 @@ public class ApplicationBase {
 	 */
 	public static void setOnMousePressed(MouseFunction onMouse) {
 		if (mousePressedHandler != null) {
-			scene.removeEventHandler(MouseEvent.MOUSE_PRESSED, mousePressedHandler);
+			scene.removeEventHandler(javafx.scene.input.MouseEvent.MOUSE_PRESSED, mousePressedHandler);
 		}
-		mousePressedHandler = (EventHandler<MouseEvent>) e -> {
+		mousePressedHandler = (EventHandler<javafx.scene.input.MouseEvent>) e -> {
 //			double x = e.getSceneX();
 //			double y = e.getSceneY();
 //			System.out.println("x = " + x + ", y = " + y);
 //			System.out.println(Thread.currentThread());
-			onMouse.apply(e, null);
+			onMouse.apply(new MouseEvent(e), null);
 			e.consume(); // prevent further processing
 			if (onTick == null) { // update output on next tick, or immediately, if not available, todo: makes sense?
 				draw();
 			}
 		};
-		scene.addEventHandler(MouseEvent.MOUSE_PRESSED, mousePressedHandler);
+		scene.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_PRESSED, mousePressedHandler);
 	}
 	
 	/**
@@ -109,20 +108,20 @@ public class ApplicationBase {
 	 */
 	public static void setOnMouseReleased(MouseFunction onMouse) {
 		if (mouseReleasedHandler != null) {
-			scene.removeEventHandler(MouseEvent.MOUSE_RELEASED, mouseReleasedHandler);
+			scene.removeEventHandler(javafx.scene.input.MouseEvent.MOUSE_RELEASED, mouseReleasedHandler);
 		}
-		mouseReleasedHandler = (EventHandler<MouseEvent>) e -> {
+		mouseReleasedHandler = (EventHandler<javafx.scene.input.MouseEvent>) e -> {
 //			double x = e.getSceneX();
 //			double y = e.getSceneY();
 //			System.out.println("x = " + x + ", y = " + y);
 //			System.out.println(Thread.currentThread());
-			onMouse.apply(e, null);
+			onMouse.apply(new MouseEvent(e), null);
 			e.consume(); // prevent further processing
 			if (onTick == null) { // update output on next tick, or immediately, if not available, todo: makes sense?
 				draw();
 			}
 		};
-		scene.addEventHandler(MouseEvent.MOUSE_RELEASED, mouseReleasedHandler);
+		scene.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_RELEASED, mouseReleasedHandler);
 	}
 	
 	/**
@@ -131,20 +130,20 @@ public class ApplicationBase {
 	 */
 	public static void setOnMouseDragged(MouseFunction onMouse) {
 		if (mouseDraggedHandler != null) {
-			scene.removeEventHandler(MouseEvent.MOUSE_DRAGGED, mouseDraggedHandler);
+			scene.removeEventHandler(javafx.scene.input.MouseEvent.MOUSE_DRAGGED, mouseDraggedHandler);
 		}
-		mouseDraggedHandler = (EventHandler<MouseEvent>) e -> {
+		mouseDraggedHandler = (EventHandler<javafx.scene.input.MouseEvent>) e -> {
 //			double x = e.getSceneX();
 //			double y = e.getSceneY();
 //			System.out.println("x = " + x + ", y = " + y);
 //			System.out.println(Thread.currentThread());
-			onMouse.apply(e, null);
+			onMouse.apply(new MouseEvent(e), null);
 			e.consume(); // prevent further processing
 			if (onTick == null) { // update output on next tick, or immediately, if not available, todo: makes sense?
 				draw();
 			}
 		};
-		scene.addEventHandler(MouseEvent.MOUSE_DRAGGED, mouseDraggedHandler);
+		scene.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_DRAGGED, mouseDraggedHandler);
 	}
 	
 	/**
@@ -153,20 +152,20 @@ public class ApplicationBase {
 	 */
 	public static void setOnMouseMoved(MouseFunction onMouse) {
 		if (mouseMovedHandler != null) {
-			scene.removeEventHandler(MouseEvent.MOUSE_MOVED, mouseMovedHandler);
+			scene.removeEventHandler(javafx.scene.input.MouseEvent.MOUSE_MOVED, mouseMovedHandler);
 		}
-		mouseMovedHandler = (EventHandler<MouseEvent>) e -> {
+		mouseMovedHandler = (EventHandler<javafx.scene.input.MouseEvent>) e -> {
 //			double x = e.getSceneX();
 //			double y = e.getSceneY();
 //			System.out.println("x = " + x + ", y = " + y);
 //			System.out.println(Thread.currentThread());
-			onMouse.apply(e, null);
+			onMouse.apply(new MouseEvent(e), null);
 			e.consume(); // prevent further processing
 			if (onTick == null) { // update output on next tick, or immediately, if not available, todo: makes sense?
 				draw();
 			}
 		};
-		scene.addEventHandler(MouseEvent.MOUSE_MOVED, mouseMovedHandler);
+		scene.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_MOVED, mouseMovedHandler);
 	}
 	
 	/**
