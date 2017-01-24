@@ -67,4 +67,9 @@ public class Button extends javafx.application.Application {
 		count++;
 		status = "You clicked " + target + " " + count + " times.";
 	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+
 }
