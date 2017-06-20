@@ -72,7 +72,7 @@ public class EventsApp extends javafx.application.Application {
 				status = String.format("text: mouse drag (%3.0f, %3.0f)", event.x, event.y), null);
 		return txt;
 	}
-	
+        
 	// when the key is held down, this method is called repeatedly
 	private void onKeyPress(String event) {
 		status = "key " + event + " pressed";

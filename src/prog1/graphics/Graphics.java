@@ -20,6 +20,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.shape.StrokeLineJoin;
 import javafx.scene.shape.StrokeType;
+import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import prog1.base.Base;
 
@@ -1146,6 +1147,17 @@ public class Graphics {
 	 */
 	public static Image text(String string, String fontName, double fontSize, Pen pen) {
 		return new Text(string, fontName, fontSize, null, pen, 0, TextAlignment.LEFT);
+	}
+	
+	/**
+	 * @param string the text string
+	 * @param font the font
+	 * @param fillColor color for filling the interior (<a href="http://docs.oracle.com/javase/8/javafx/api/javafx/scene/paint/Color.html">list of color names</a>)
+	 * @param pen pen for drawing the outline
+	 * @return the text
+	 */
+	public static Image text(String string, Font font, Color fillColor, Pen pen) {
+		return new Text(string, font, fillColor, pen, 0, TextAlignment.LEFT);
 	}
 	
 	/**

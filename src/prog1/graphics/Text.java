@@ -18,6 +18,7 @@ package prog1.graphics;
 import javafx.geometry.Bounds;
 import javafx.geometry.VPos;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 
 /**
@@ -75,7 +76,30 @@ class Text extends Shape {
 		width = bounds.getWidth();
 		height = bounds.getHeight();
 	}
+
+        public Text(String string, Font font, Color color, Pen pen, 
+			double wrappingWidth, TextAlignment alignment) 
+	{
+		super(0, 0, color, pen);
+		this.string = string;
+		this.wrappingWidth = wrappingWidth;
+		this.alignment = alignment;
+
+		javafx.scene.text.Text text = new javafx.scene.text.Text(string);
+		this.font = font;
+		text.setFont(font);
+		text.setTextOrigin(VPos.TOP);
+		text.setWrappingWidth(wrappingWidth);
+		text.setTextAlignment(alignment);
+		// render(text);
 	
+		// System.out.println(text.getBoundsInLocal());
+		// System.out.println(text.getBoundsInParent());
+		Bounds bounds = text.getBoundsInLocal();
+		width = bounds.getWidth();
+		height = bounds.getHeight();
+	}
+
 	@Override
 	protected javafx.scene.Node render() {
 		javafx.scene.text.Text text = new javafx.scene.text.Text(string);
