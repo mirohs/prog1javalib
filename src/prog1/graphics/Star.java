@@ -19,45 +19,47 @@ import javafx.scene.paint.Color;
 
 /**
  * A star.
+ *
  * @author michaelrohs
  */
 class Star extends Shape {
-	private final Double[] points = new Double[2 * 5];
 
-	public Star(double length, Color color, Pen pen) {
-		super(0, 0, color, pen);
-		final double alphaStep = 2 * Math.PI / 5;
-		double alpha = -Math.PI / 2;
-		double x1 = Double.POSITIVE_INFINITY;
-		double y1 = Double.POSITIVE_INFINITY;
-		double x2 = Double.NEGATIVE_INFINITY;
-		double y2 = Double.NEGATIVE_INFINITY;
-		int i = 0;
-		do {
-			double x = length * Math.cos(alpha);
-			double y = length * Math.sin(alpha);
-			x1 = Math.min(x1, x);
-			y1 = Math.min(y1, y);
-			x2 = Math.max(x2, x);
-			y2 = Math.max(y2, y);
-			points[i] = x;
-			points[i + 1] = y;
-			i = (i + 4) % points.length;
-			alpha += alphaStep;
-		} while (i != 0);
-		for (i = 0; i < points.length; ) {
-			points[i++] -= x1;
-			points[i++] -= y1;
-		}
-		this.width = x2 - x1;
-		this.height = y2 - y1;
-	}
-	
-	@Override
-	protected javafx.scene.Node render() {
-		javafx.scene.shape.Polygon polygon = new javafx.scene.shape.Polygon();
-		polygon.getPoints().setAll(points);
-		return render(polygon);
-	}
+    private final Double[] points = new Double[2 * 5];
+
+    public Star(ApplicationBase app, double length, Color color, Pen pen) {
+        super(app, 0, 0, color, pen);
+        final double alphaStep = 2 * Math.PI / 5;
+        double alpha = -Math.PI / 2;
+        double x1 = Double.POSITIVE_INFINITY;
+        double y1 = Double.POSITIVE_INFINITY;
+        double x2 = Double.NEGATIVE_INFINITY;
+        double y2 = Double.NEGATIVE_INFINITY;
+        int i = 0;
+        do {
+            double x = length * Math.cos(alpha);
+            double y = length * Math.sin(alpha);
+            x1 = Math.min(x1, x);
+            y1 = Math.min(y1, y);
+            x2 = Math.max(x2, x);
+            y2 = Math.max(y2, y);
+            points[i] = x;
+            points[i + 1] = y;
+            i = (i + 4) % points.length;
+            alpha += alphaStep;
+        } while (i != 0);
+        for (i = 0; i < points.length;) {
+            points[i++] -= x1;
+            points[i++] -= y1;
+        }
+        this.width = x2 - x1;
+        this.height = y2 - y1;
+    }
+
+    @Override
+    protected javafx.scene.Node render() {
+        javafx.scene.shape.Polygon polygon = new javafx.scene.shape.Polygon();
+        polygon.getPoints().setAll(points);
+        return render(polygon);
+    }
 
 }

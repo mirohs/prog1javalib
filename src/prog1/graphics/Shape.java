@@ -19,80 +19,84 @@ import javafx.scene.paint.Color;
 
 /**
  * An abstract shape.
+ *
  * @author michaelrohs
  */
 abstract class Shape extends Image {
-	private final Color color;
-	private final Pen pen;
 
-	public Shape(double width, double height, Color color, Pen pen) {
-		super(width, height);
-		this.color = color;
-		this.pen = pen;
-	}
+    private final Color color;
+    private final Pen pen;
+    private final ApplicationBase app;
 
-	@Override
-	protected abstract javafx.scene.Node render();
+    public Shape(ApplicationBase app, double width, double height, Color color, Pen pen) {
+        super(width, height);
+        this.color = color;
+        this.pen = pen;
+        this.app = app;
+    }
 
-	protected javafx.scene.Node render(javafx.scene.shape.Shape s) {
-		s.setFill(color);
-		if (pen != null) {
-			s.setStroke(pen.color);
-			s.setStrokeWidth(pen.width);
-			s.setStrokeType(pen.type);
-			s.setStrokeLineCap(pen.cap);
-			s.setStrokeLineJoin(pen.join);
+    @Override
+    protected abstract javafx.scene.Node render();
+
+    protected javafx.scene.Node render(javafx.scene.shape.Shape s) {
+        s.setFill(color);
+        if (pen != null) {
+            s.setStroke(pen.color);
+            s.setStrokeWidth(pen.width);
+            s.setStrokeType(pen.type);
+            s.setStrokeLineCap(pen.cap);
+            s.setStrokeLineJoin(pen.join);
 			// .setStrokeMiterLimit(10.0);
-			// .setStrokeDashOffset(0.0);
-			// .getStrokeDashArray().addAll(7.0, 21.0);
-		} else {
-			s.setStroke(null);
-		}
+            // .setStrokeDashOffset(0.0);
+            // .getStrokeDashArray().addAll(7.0, 21.0);
+        } else {
+            s.setStroke(null);
+        }
 //		if (clip != null) {
 //			s.setClip(clip.render());
 //		}
-		if (pressFunction != null) {
+        if (pressFunction != null) {
 //			System.out.println("Shape.render: pressFunction = " + pressFunction);
 //			System.out.println(Thread.currentThread());
-			s.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_PRESSED, (javafx.scene.input.MouseEvent e) -> {
-				pressFunction.apply(new MouseEvent(e), pressFunctionTarget);
-				e.consume();
-				ApplicationBase.draw();
-			});
-		}
-		if (releaseFunction != null) {
+            s.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_PRESSED, (javafx.scene.input.MouseEvent e) -> {
+                pressFunction.apply(new MouseEvent(e), pressFunctionTarget);
+                e.consume();
+                app.draw();
+            });
+        }
+        if (releaseFunction != null) {
 //			System.out.println("Shape.render: releaseFunction = " + releaseFunction);
 //			System.out.println(Thread.currentThread());
-			s.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_RELEASED, (javafx.scene.input.MouseEvent e) -> {
-				releaseFunction.apply(new MouseEvent(e), releaseFunctionTarget);
-				e.consume();
-				ApplicationBase.draw();
-			});
-		}
-		if (moveFunction != null) {
-			s.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_MOVED, (javafx.scene.input.MouseEvent e) -> {
-				moveFunction.apply(new MouseEvent(e), moveFunctionTarget);
-				e.consume();
-				ApplicationBase.draw();
-			});
-		}
-		if (dragFunction != null) {
-			s.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_DRAGGED, (javafx.scene.input.MouseEvent e) -> {
-				dragFunction.apply(new MouseEvent(e), dragFunctionTarget);
-				e.consume();
-				ApplicationBase.draw();
-			});
-		}
-		return s;
-	}
-	
-	@Override
-	protected String toString(String indent) {
-		return indent + String.format("<" + getClass().getSimpleName() + 
-				" width=\"%.1f\" height=\"%.1f\" color=\"%s\" pen=\"%s\"/>\n", 
-				width, height, 
-				color == null ? "null" : color.toString(), 
-				pen == null ? "null" : pen.toString());
-	}
+            s.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_RELEASED, (javafx.scene.input.MouseEvent e) -> {
+                releaseFunction.apply(new MouseEvent(e), releaseFunctionTarget);
+                e.consume();
+                app.draw();
+            });
+        }
+        if (moveFunction != null) {
+            s.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_MOVED, (javafx.scene.input.MouseEvent e) -> {
+                moveFunction.apply(new MouseEvent(e), moveFunctionTarget);
+                e.consume();
+                app.draw();
+            });
+        }
+        if (dragFunction != null) {
+            s.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_DRAGGED, (javafx.scene.input.MouseEvent e) -> {
+                dragFunction.apply(new MouseEvent(e), dragFunctionTarget);
+                e.consume();
+                app.draw();
+            });
+        }
+        return s;
+    }
+
+    @Override
+    protected String toString(String indent) {
+        return indent + String.format("<" + getClass().getSimpleName()
+                + " width=\"%.1f\" height=\"%.1f\" color=\"%s\" pen=\"%s\"/>\n",
+                width, height,
+                color == null ? "null" : color.toString(),
+                pen == null ? "null" : pen.toString());
+    }
 
 }

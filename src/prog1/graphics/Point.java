@@ -19,32 +19,38 @@ import prog1.base.Base;
 
 /**
  * Information about a 2D point.
+ *
  * @author michaelrohs
  */
 public class Point {
-	public final double x, y;
 
-	public Point(double x, double y) {
-		this.x = x;
-		this.y = y;
-	}
-	
-	@Override
-	public String toString() {
-		return "(" + x + ", " + y + ")";
-	}
-	
-	@Override
-	public boolean equals(Object o) {
-		if (o == null) return false;
-		if (getClass() != o.getClass()) return false;
-		Point p = (Point) o;
-		return Math.abs(x - p.x) < Base.EPSILON && 
-			   Math.abs(y - p.y) < Base.EPSILON;
-	}
+    public final double x, y;
 
-	@Override
-	public int hashCode() {
-		return (int)(x + 31 * y);
-	}
+    public Point(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    @Override
+    public String toString() {
+        return "(" + x + ", " + y + ")";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        }
+        if (getClass() != o.getClass()) {
+            return false;
+        }
+        Point p = (Point) o;
+        return Math.abs(x - p.x) < Base.EPSILON
+                && Math.abs(y - p.y) < Base.EPSILON;
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) (x + 31 * y);
+    }
 }

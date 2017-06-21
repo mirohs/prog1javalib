@@ -17,13 +17,15 @@ package prog1.graphics;
 
 /**
  * Callback function for animations.
+ *
  * @author michaelrohs
  */
 public interface TickFunction {
 
-	/**
-	 * Tick function.
-	 * @param time time in seconds since start
-	 */
-	public void apply(double time);
+    /**
+     * Tick function.
+     *
+     * @param time time in seconds since start
+     */
+    public void apply(double time);
 }

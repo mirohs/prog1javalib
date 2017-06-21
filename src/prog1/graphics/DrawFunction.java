@@ -17,14 +17,16 @@ package prog1.graphics;
 
 /**
  * Function for drawing images.
+ *
  * @author michaelrohs
  */
 public interface DrawFunction {
 
-	/**
-	 * Produces an image.
-	 * @return the image
-	 */
-	public Image apply();
-	
+    /**
+     * Produces an image.
+     *
+     * @return the image
+     */
+    public Image apply();
+
 }

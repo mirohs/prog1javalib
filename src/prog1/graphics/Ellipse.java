@@ -19,19 +19,20 @@ import javafx.scene.paint.Color;
 
 /**
  * An ellipse.
+ *
  * @author michaelrohs
  */
 class Ellipse extends Shape {
 
-	public Ellipse(double width, double height, Color color, Pen pen) {
-		super(width, height, color, pen);
-	}
-	
-	@Override
-	protected javafx.scene.Node render() {
-		double w2 = width / 2.0;
-		double h2 = height / 2.0;
-		return render(new javafx.scene.shape.Ellipse(w2, h2, w2, h2));
-	}
+    public Ellipse(ApplicationBase app, double width, double height, Color color, Pen pen) {
+        super(app, width, height, color, pen);
+    }
+
+    @Override
+    protected javafx.scene.Node render() {
+        double w2 = width / 2.0;
+        double h2 = height / 2.0;
+        return render(new javafx.scene.shape.Ellipse(w2, h2, w2, h2));
+    }
 
 }

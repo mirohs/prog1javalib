@@ -16,46 +16,44 @@
 package examples;
 
 import prog1.graphics.*;
-import static prog1.graphics.Graphics.*;
 
 // Windows:
 // javac -cp .;prog1javalib.jar examples\StreetSign.java
 // java -cp .;prog1javalib.jar examples.StreetSign
-
 // OS X:
 // javac -cp .:prog1javalib.jar examples/StreetSign.java
 // java -cp .:prog1javalib.jar examples.StreetSign
-
 /**
  *
  * @author michaelrohs
  */
 public class StreetSign extends javafx.application.Application {
-	
-	private double time;
 
-	public StreetSign() {
-	}
+    private ApplicationBase app;
+    private Graphics g;
+    private double time;
 
-	@Override
-	public void start(javafx.stage.Stage stage) {
-		// start method: window title, width, and height, drawing method
-		ApplicationBase.start("Sign", 110, 80, stage, this::onDraw);
-		ApplicationBase.setOnTick(this::onTick); // register tick function
-	}
+    @Override
+    public void start(javafx.stage.Stage stage) {
+        // start method: window title, width, and height, drawing method
+        app = ApplicationBase.start("Sign", 110, 80, stage);
+        g = app.getGraphics();
+        app.setOnTick(this::onTick); // register tick function
+        app.setOnDraw(this::onDraw);
+    }
 
-	private Image onDraw() {
-		Image sign = circle(30, "navy", pen("red", 9));
-		sign = overlay(rectangle(60, 9, "red"), sign);
-		sign = rotate(-45 - time * 100, sign); // time-based sign rotation
-		Image highlight = ellipse(100, 30, "white", 0.5);
-		sign = overlay(5, 25, highlight, sign);
+    private Image onDraw() {
+        Image sign = g.circle(30, "navy", g.pen("red", 9));
+        sign = g.overlay(g.rectangle(60, 9, "red"), sign);
+        sign = g.rotate(-45 - time * 100, sign); // time-based sign rotation
+        Image highlight = g.ellipse(100, 30, "white", 0.5);
+        sign = g.overlay(5, 25, highlight, sign);
 //		save(sign, "sign4.png");
-		return sign;
-	}
+        return sign;
+    }
 
-	private void onTick(double time) { // time in seconds
-		this.time = time;
-	}
+    private void onTick(double time) { // time in seconds
+        this.time = time;
+    }
 
 }

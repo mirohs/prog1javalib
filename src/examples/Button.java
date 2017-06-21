@@ -16,7 +16,6 @@
 package examples;
 
 import prog1.graphics.*;
-import static prog1.graphics.Graphics.*;
 
 // Windows:
 // javac -cp .;prog1javalib.jar examples\Button.java
@@ -30,46 +29,41 @@ import static prog1.graphics.Graphics.*;
  */
 public class Button extends javafx.application.Application {
 
-	private final Image button;
-	private String status = "You clicked my button 0 times.";
-	private int count = 0;
+    private ApplicationBase app;
+    private Graphics g;
+    private Image button;
+    private String status = "You clicked my button 0 times.";
+    private int count = 0;
 
-	public Button() {
-		// a button is an overlay of a label on a gray rectangle
-		button = overlay(text("Click me", 24, "black"),
-				rectangle(140, 40, "lightgray", pen("darkgray")));
+    @Override
+    public void start(javafx.stage.Stage stage) { // entry point
+        // window title, width, and height; drawing method
+        app = ApplicationBase.start("Button", 500, 100, stage);
+        g = app.getGraphics();
 
-		// event handling with a named method:
-		button.setOnMousePressed(this::onClick, "my button.");
+        // a button is an overlay of a label on a gray rectangle
+        button = g.overlay(g.text("Click me", 24, "black"),
+                g.rectangle(140, 40, "lightgray", g.pen("darkgray")));
 
-		// alternative: event handling with an anonymous function:
-//		button.setOnMousePressed(
-//				(event, target) -> {
-//					count++;
-//					status = "You clicked " + target + " " + count + " times.";
-//				}, "my button.");
+        // event handling with a named method:
+        button.setOnMousePressed(this::onClick, "my button.");
+        
+        app.setOnDraw(this::onDraw);
+    }
 
-	}
+    private Image onDraw() {
+        // output button above text
+        return g.above(button,
+                g.text(status, 24, "black"));
+    }
 
-	@Override
-	public void start(javafx.stage.Stage stage) { // entry point
-		// window title, width, and height; drawing method
-		ApplicationBase.start("Button", 500, 100, stage, this::onDraw);
-	}
+    private void onClick(MouseEvent event, Object target) {
+        count++;
+        status = "You clicked " + target + " " + count + " times.";
+    }
 
-	private Image onDraw() {
-		// output button above text
-		return above(button,
-				text(status, 24, "black"));
-	}
-
-	private void onClick(MouseEvent event, Object target) {
-		count++;
-		status = "You clicked " + target + " " + count + " times.";
-	}
-
-	public static void main(String[] args) {
-		launch(args);
-	}
+    public static void main(String[] args) {
+        launch(args);
+    }
 
 }

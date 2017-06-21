@@ -17,14 +17,17 @@ package prog1.graphics;
 
 /**
  * Function that handles mouse events.
+ *
  * @author michaelrohs
  */
 public interface MouseFunction {
 
-	/**
-	 * Function that handles mouse events.
-	 * @param event a mouse event
-	 * @param target an arbitrary object that is supplied when registering the click function
-	 */
-	public void apply(MouseEvent event, Object target);
+    /**
+     * Function that handles mouse events.
+     *
+     * @param event a mouse event
+     * @param target an arbitrary object that is supplied when registering the
+     * click function
+     */
+    public void apply(MouseEvent event, Object target);
 }

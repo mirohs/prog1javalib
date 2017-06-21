@@ -23,90 +23,89 @@ import javafx.scene.text.TextAlignment;
 
 /**
  * Text in a certain size, color, and font.
+ *
  * @author michaelrohs
  */
 class Text extends Shape {
-	private final String string;
-	private final javafx.scene.text.Font font;
-	private final double wrappingWidth;
-	private final TextAlignment alignment;
 
-	public Text(String string, double fontSize, Color color, Pen pen, 
-			double wrappingWidth, TextAlignment alignment) 
-	{
-		super(0, 0, color, pen);
-		this.string = string;
-		this.wrappingWidth = wrappingWidth;
-		this.alignment = alignment;
+    private final String string;
+    private final javafx.scene.text.Font font;
+    private final double wrappingWidth;
+    private final TextAlignment alignment;
 
-		javafx.scene.text.Text text = new javafx.scene.text.Text(string);
-		font = new javafx.scene.text.Font(fontSize);
-		text.setFont(font);
-		text.setTextOrigin(VPos.TOP);
-		text.setWrappingWidth(wrappingWidth);
-		text.setTextAlignment(alignment);
+    public Text(ApplicationBase app, String string, double fontSize, Color color, Pen pen,
+            double wrappingWidth, TextAlignment alignment) {
+        super(app, 0, 0, color, pen);
+        this.string = string;
+        this.wrappingWidth = wrappingWidth;
+        this.alignment = alignment;
+
+        javafx.scene.text.Text text = new javafx.scene.text.Text(string);
+        font = new javafx.scene.text.Font(fontSize);
+        text.setFont(font);
+        text.setTextOrigin(VPos.TOP);
+        text.setWrappingWidth(wrappingWidth);
+        text.setTextAlignment(alignment);
 		// render(text);
-	
-		// System.out.println(text.getBoundsInLocal());
-		// System.out.println(text.getBoundsInParent());
-		Bounds bounds = text.getBoundsInLocal();
-		width = bounds.getWidth();
-		height = bounds.getHeight();
-	}
-	
-	public Text(String string, String fontName, double fontSize, Color color, Pen pen, 
-			double wrappingWidth, TextAlignment alignment) 
-	{
-		super(0, 0, color, pen);
-		this.string = string;
-		this.wrappingWidth = wrappingWidth;
-		this.alignment = alignment;
 
-		javafx.scene.text.Text text = new javafx.scene.text.Text(string);
-		font = new javafx.scene.text.Font(fontName, fontSize);
-		text.setFont(font);
-		text.setTextOrigin(VPos.TOP);
-		text.setWrappingWidth(wrappingWidth);
-		text.setTextAlignment(alignment);
+		// System.out.println(text.getBoundsInLocal());
+        // System.out.println(text.getBoundsInParent());
+        Bounds bounds = text.getBoundsInLocal();
+        width = bounds.getWidth();
+        height = bounds.getHeight();
+    }
+
+    public Text(ApplicationBase app, String string, String fontName, double fontSize, Color color, Pen pen,
+            double wrappingWidth, TextAlignment alignment) {
+        super(app, 0, 0, color, pen);
+        this.string = string;
+        this.wrappingWidth = wrappingWidth;
+        this.alignment = alignment;
+
+        javafx.scene.text.Text text = new javafx.scene.text.Text(string);
+        font = new javafx.scene.text.Font(fontName, fontSize);
+        text.setFont(font);
+        text.setTextOrigin(VPos.TOP);
+        text.setWrappingWidth(wrappingWidth);
+        text.setTextAlignment(alignment);
 		// render(text);
-	
+
 		// System.out.println(text.getBoundsInLocal());
-		// System.out.println(text.getBoundsInParent());
-		Bounds bounds = text.getBoundsInLocal();
-		width = bounds.getWidth();
-		height = bounds.getHeight();
-	}
+        // System.out.println(text.getBoundsInParent());
+        Bounds bounds = text.getBoundsInLocal();
+        width = bounds.getWidth();
+        height = bounds.getHeight();
+    }
 
-        public Text(String string, Font font, Color color, Pen pen, 
-			double wrappingWidth, TextAlignment alignment) 
-	{
-		super(0, 0, color, pen);
-		this.string = string;
-		this.wrappingWidth = wrappingWidth;
-		this.alignment = alignment;
+    public Text(ApplicationBase app, String string, Font font, Color color, Pen pen,
+            double wrappingWidth, TextAlignment alignment) {
+        super(app, 0, 0, color, pen);
+        this.string = string;
+        this.wrappingWidth = wrappingWidth;
+        this.alignment = alignment;
 
-		javafx.scene.text.Text text = new javafx.scene.text.Text(string);
-		this.font = font;
-		text.setFont(font);
-		text.setTextOrigin(VPos.TOP);
-		text.setWrappingWidth(wrappingWidth);
-		text.setTextAlignment(alignment);
+        javafx.scene.text.Text text = new javafx.scene.text.Text(string);
+        this.font = font;
+        text.setFont(font);
+        text.setTextOrigin(VPos.TOP);
+        text.setWrappingWidth(wrappingWidth);
+        text.setTextAlignment(alignment);
 		// render(text);
-	
-		// System.out.println(text.getBoundsInLocal());
-		// System.out.println(text.getBoundsInParent());
-		Bounds bounds = text.getBoundsInLocal();
-		width = bounds.getWidth();
-		height = bounds.getHeight();
-	}
 
-	@Override
-	protected javafx.scene.Node render() {
-		javafx.scene.text.Text text = new javafx.scene.text.Text(string);
-		text.setFont(font);
-		text.setTextOrigin(VPos.TOP);
-		text.setWrappingWidth(wrappingWidth);
-		text.setTextAlignment(alignment);
+		// System.out.println(text.getBoundsInLocal());
+        // System.out.println(text.getBoundsInParent());
+        Bounds bounds = text.getBoundsInLocal();
+        width = bounds.getWidth();
+        height = bounds.getHeight();
+    }
+
+    @Override
+    protected javafx.scene.Node render() {
+        javafx.scene.text.Text text = new javafx.scene.text.Text(string);
+        text.setFont(font);
+        text.setTextOrigin(VPos.TOP);
+        text.setWrappingWidth(wrappingWidth);
+        text.setTextAlignment(alignment);
 
 //		text.setLayoutX(width);
 //		text.setLayoutY(width);
@@ -114,7 +113,6 @@ class Text extends Shape {
 //		text.setTranslateY(width);
 //		text.setX(width);
 //		text.setY(width);
-
 //		text.getBoundsInLocal();
 //		text.getBoundsInParent();
 //		text.getLayoutBounds();
@@ -127,8 +125,7 @@ class Text extends Shape {
 //		text.getTranslateY();
 //		text.getX();
 //		text.getY();
-		
-		return render(text);
-	}
+        return render(text);
+    }
 
 }

@@ -17,30 +17,33 @@ package prog1.graphics;
 
 /**
  * A line in front of a background image.
+ *
  * @author michaelrohs
  */
 class ImageLine extends Group {
 
-	public ImageLine(Image image, double x1, double y1, double x2, double y2, Pen pen) {
-		double minX = Math.min(0, Math.min(x1, x2));
-		double minY = Math.min(0, Math.min(y1, y2));
-		double maxX = Math.max(image.width, Math.max(x1, x2));
-		double maxY = Math.max(image.height, Math.max(y1, y2));
-		width = maxX - minX;
-		height = maxY - minY;
-		add(image, -minX, -minY);
-		add(new Line(x2 - x1, y2 - y1, pen), Math.min(x1, x2) - minX, Math.min(y1, y2) - minY);
-	}
+    public ImageLine(ApplicationBase app, Image image, double x1, double y1, double x2, double y2, Pen pen) {
+        super(app);
+        double minX = Math.min(0, Math.min(x1, x2));
+        double minY = Math.min(0, Math.min(y1, y2));
+        double maxX = Math.max(image.width, Math.max(x1, x2));
+        double maxY = Math.max(image.height, Math.max(y1, y2));
+        width = maxX - minX;
+        height = maxY - minY;
+        add(image, -minX, -minY);
+        add(new Line(app, x2 - x1, y2 - y1, pen), Math.min(x1, x2) - minX, Math.min(y1, y2) - minY);
+    }
 
-	public ImageLine(double x1, double y1, double x2, double y2, Pen pen, Image image) {
-		double minX = Math.min(0, Math.min(x1, x2));
-		double minY = Math.min(0, Math.min(y1, y2));
-		double maxX = Math.max(image.width, Math.max(x1, x2));
-		double maxY = Math.max(image.height, Math.max(y1, y2));
-		width = maxX - minX;
-		height = maxY - minY;
-		add(new Line(x2 - x1, y2 - y1, pen), Math.min(x1, x2) - minX, Math.min(y1, y2) - minY);
-		add(image, -minX, -minY);
-	}
+    public ImageLine(ApplicationBase app, double x1, double y1, double x2, double y2, Pen pen, Image image) {
+        super(app);
+        double minX = Math.min(0, Math.min(x1, x2));
+        double minY = Math.min(0, Math.min(y1, y2));
+        double maxX = Math.max(image.width, Math.max(x1, x2));
+        double maxY = Math.max(image.height, Math.max(y1, y2));
+        width = maxX - minX;
+        height = maxY - minY;
+        add(new Line(app, x2 - x1, y2 - y1, pen), Math.min(x1, x2) - minX, Math.min(y1, y2) - minY);
+        add(image, -minX, -minY);
+    }
 
 }

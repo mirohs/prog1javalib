@@ -17,22 +17,24 @@ package prog1.graphics;
 
 /**
  * A bitmap from a file (jpg, png, or gif).
+ *
  * @author michaelrohs
  */
 class Bitmap extends Image {
-	private final javafx.scene.image.Image image;
 
-	public Bitmap(String url) {
-		super(0, 0);
-		image = new javafx.scene.image.Image(url, false);
+    private final javafx.scene.image.Image image;
+
+    public Bitmap(String url) {
+        super(0, 0);
+        image = new javafx.scene.image.Image(url, false);
 //		System.out.printf("image: %f, %f\n", image.getWidth(), image.getHeight());
-		width = image.getWidth();
-		height = image.getHeight();
-	}
+        width = image.getWidth();
+        height = image.getHeight();
+    }
 
-	@Override
-	protected javafx.scene.Node render() {
-		return new javafx.scene.image.ImageView(image);
-	}
+    @Override
+    protected javafx.scene.Node render() {
+        return new javafx.scene.image.ImageView(image);
+    }
 
 }

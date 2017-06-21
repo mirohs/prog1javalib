@@ -19,34 +19,36 @@ import javafx.scene.paint.Color;
 
 /**
  * A polyline in front of a background image.
+ *
  * @author michaelrohs
  */
 class ImagePolyline extends Group {
 
-	public ImagePolyline(Image image, double[] points, Color color, Pen pen) {
-		// bounding rectangle of polyline
-		double x1 = Double.POSITIVE_INFINITY;
-		double y1 = Double.POSITIVE_INFINITY;
-		double x2 = Double.NEGATIVE_INFINITY;
-		double y2 = Double.NEGATIVE_INFINITY;
-		for (int i = 0; i < points.length;) {
-			double x = points[i++];
-			double y = points[i++];
-			x1 = Math.min(x1, x);
-			y1 = Math.min(y1, y);
-			x2 = Math.max(x2, x);
-			y2 = Math.max(y2, y);
-		}
-		// bounding rectangle of polyline and image
-		double minX = Math.min(0, x1);
-		double minY = Math.min(0, y1);
-		double maxX = Math.max(image.width, x2);
-		double maxY = Math.max(image.height, y2);
-		width = maxX - minX;
-		height = maxY - minY;
+    public ImagePolyline(ApplicationBase app, Image image, double[] points, Color color, Pen pen) {
+        super(app);
+        // bounding rectangle of polyline
+        double x1 = Double.POSITIVE_INFINITY;
+        double y1 = Double.POSITIVE_INFINITY;
+        double x2 = Double.NEGATIVE_INFINITY;
+        double y2 = Double.NEGATIVE_INFINITY;
+        for (int i = 0; i < points.length;) {
+            double x = points[i++];
+            double y = points[i++];
+            x1 = Math.min(x1, x);
+            y1 = Math.min(y1, y);
+            x2 = Math.max(x2, x);
+            y2 = Math.max(y2, y);
+        }
+        // bounding rectangle of polyline and image
+        double minX = Math.min(0, x1);
+        double minY = Math.min(0, y1);
+        double maxX = Math.max(image.width, x2);
+        double maxY = Math.max(image.height, y2);
+        width = maxX - minX;
+        height = maxY - minY;
 
-		add(image, -minX, -minY);
-		add(new Polyline(points, color, pen), x1 - minX, y1 - minY);
-	}
-	
+        add(image, -minX, -minY);
+        add(new Polyline(app, points, color, pen), x1 - minX, y1 - minY);
+    }
+
 }

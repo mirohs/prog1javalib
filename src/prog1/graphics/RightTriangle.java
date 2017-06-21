@@ -19,22 +19,23 @@ import javafx.scene.paint.Color;
 
 /**
  * A right triangle.
+ *
  * @author michaelrohs
  */
 class RightTriangle extends Shape {
 
-	public RightTriangle(double width, double height, Color color, Pen pen) {
-		super(width, height, color, pen);
-	}
-	
-	@Override
-	protected javafx.scene.Node render() {
-		javafx.scene.shape.Polygon polygon = new javafx.scene.shape.Polygon();
-		polygon.getPoints().addAll(new Double[] {
-			0.0, 0.0, 
-			0.0, height,
-			width, height });
-		return render(polygon);
-	}
+    public RightTriangle(ApplicationBase app, double width, double height, Color color, Pen pen) {
+        super(app, width, height, color, pen);
+    }
+
+    @Override
+    protected javafx.scene.Node render() {
+        javafx.scene.shape.Polygon polygon = new javafx.scene.shape.Polygon();
+        polygon.getPoints().addAll(new Double[]{
+            0.0, 0.0,
+            0.0, height,
+            width, height});
+        return render(polygon);
+    }
 
 }

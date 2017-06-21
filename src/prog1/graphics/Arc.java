@@ -20,24 +20,26 @@ import javafx.scene.shape.ArcType;
 
 /**
  * A pie slice.
+ *
  * @author michaelrohs
  */
 class Arc extends Shape {
-	private final double startAngle;
-	private final double lengthAngle;
 
-	public Arc(double radius, double startAngle, double lengthAngle, Color color, Pen pen) {
-		super(2.0 * radius, 2.0 * radius, color, pen);
-		this.startAngle = startAngle;
-		this.lengthAngle = lengthAngle;
-	}
-	
-	@Override
-	protected javafx.scene.Node render() {
-		double r = width / 2.0;
-		javafx.scene.shape.Arc arc = new javafx.scene.shape.Arc(r, r, r, r, startAngle, lengthAngle);
-		arc.setType(ArcType.ROUND);
-		return render(arc);
-	}
+    private final double startAngle;
+    private final double lengthAngle;
+
+    public Arc(ApplicationBase app, double radius, double startAngle, double lengthAngle, Color color, Pen pen) {
+        super(app, 2.0 * radius, 2.0 * radius, color, pen);
+        this.startAngle = startAngle;
+        this.lengthAngle = lengthAngle;
+    }
+
+    @Override
+    protected javafx.scene.Node render() {
+        double r = width / 2.0;
+        javafx.scene.shape.Arc arc = new javafx.scene.shape.Arc(r, r, r, r, startAngle, lengthAngle);
+        arc.setType(ArcType.ROUND);
+        return render(arc);
+    }
 
 }

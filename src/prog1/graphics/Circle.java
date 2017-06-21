@@ -19,18 +19,19 @@ import javafx.scene.paint.Color;
 
 /**
  * A circle.
+ *
  * @author michaelrohs
  */
 class Circle extends Shape {
 
-	public Circle(double radius, Color color, Pen pen) {
-		super(2.0 * radius, 2.0 * radius, color, pen);
-	}
-	
-	@Override
-	protected javafx.scene.Node render() {
-		double r = width / 2.0;
-		return render(new javafx.scene.shape.Circle(r, r, r));
-	}
+    public Circle(ApplicationBase app, double radius, Color color, Pen pen) {
+        super(app, 2.0 * radius, 2.0 * radius, color, pen);
+    }
+
+    @Override
+    protected javafx.scene.Node render() {
+        double r = width / 2.0;
+        return render(new javafx.scene.shape.Circle(r, r, r));
+    }
 
 }

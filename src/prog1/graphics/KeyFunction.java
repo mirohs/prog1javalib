@@ -17,14 +17,16 @@ package prog1.graphics;
 
 /**
  * Function that handles key events.
+ *
  * @author michaelrohs
  */
 public interface KeyFunction {
 
-	/**
-	 * Called upon key events. Control keys are encoded as uppercase Strings, 
-	 * like "SHIFT", "LEFT", etc.
-	 * @param event the key or uppercase key code.
-	 */
-	void apply(String event);
+    /**
+     * Called upon key events. Control keys are encoded as uppercase Strings,
+     * like "SHIFT", "LEFT", etc.
+     *
+     * @param event the key or uppercase key code.
+     */
+    void apply(String event);
 }

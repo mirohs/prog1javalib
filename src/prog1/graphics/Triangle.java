@@ -19,25 +19,26 @@ import javafx.scene.paint.Color;
 
 /**
  * An equilateral triangle.
+ *
  * @author michaelrohs
  */
 class Triangle extends Shape {
 
-	public Triangle(double length, Color color, Pen pen) {
-		super(length, length * Math.sqrt(0.75), color, pen);
+    public Triangle(ApplicationBase app, double length, Color color, Pen pen) {
+        super(app, length, length * Math.sqrt(0.75), color, pen);
 		// (length/2)^2 + height^2 = length^2
-		// height^2 = length^2 - (length/2)^2
-		// height^2 = length^2 - 0.25 * length^2
-	}
-	
-	@Override
-	protected javafx.scene.Node render() {
-		javafx.scene.shape.Polygon polygon = new javafx.scene.shape.Polygon();
-		polygon.getPoints().addAll(new Double[] {
-			0.0, height,
-			width, height,
-			width / 2.0, 0.0});
-		return render(polygon);
-	}
+        // height^2 = length^2 - (length/2)^2
+        // height^2 = length^2 - 0.25 * length^2
+    }
+
+    @Override
+    protected javafx.scene.Node render() {
+        javafx.scene.shape.Polygon polygon = new javafx.scene.shape.Polygon();
+        polygon.getPoints().addAll(new Double[]{
+            0.0, height,
+            width, height,
+            width / 2.0, 0.0});
+        return render(polygon);
+    }
 
 }

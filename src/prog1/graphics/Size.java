@@ -19,33 +19,39 @@ import prog1.base.Base;
 
 /**
  * Information about width and height.
+ *
  * @author michaelrohs
  */
 public class Size {
-	public final double width, height;
 
-	public Size(double width, double height) {
-		this.width = width;
-		this.height = height;
-	}
-		
-	@Override
-	public String toString() {
-		return "(" + width + ", " + height + ")";
-	}
-	
-	@Override
-	public boolean equals(Object o) {
-		if (o == null) return false;
-		if (getClass() != o.getClass()) return false;
-		Size s = (Size) o;
-		return Math.abs(width - s.width) < Base.EPSILON && 
-			   Math.abs(height - s.height) < Base.EPSILON;
-	}
+    public final double width, height;
 
-	@Override
-	public int hashCode() {
-		return (int)(31 * 31 * width + 31 * 31 * 31 * height);
-	}
+    public Size(double width, double height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    @Override
+    public String toString() {
+        return "(" + width + ", " + height + ")";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        }
+        if (getClass() != o.getClass()) {
+            return false;
+        }
+        Size s = (Size) o;
+        return Math.abs(width - s.width) < Base.EPSILON
+                && Math.abs(height - s.height) < Base.EPSILON;
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) (31 * 31 * width + 31 * 31 * 31 * height);
+    }
 
 }

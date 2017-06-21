@@ -19,17 +19,18 @@ import javafx.scene.paint.Color;
 
 /**
  * A rectangle.
+ *
  * @author michaelrohs
  */
 class Rectangle extends Shape {
 
-	public Rectangle(double width, double height, Color color, Pen pen) {
-		super(width, height, color, pen);
-	}
+    public Rectangle(ApplicationBase app, double width, double height, Color color, Pen pen) {
+        super(app, width, height, color, pen);
+    }
 
-	@Override
-	protected javafx.scene.Node render() {
-		return render(new javafx.scene.shape.Rectangle(width, height));
-	}
+    @Override
+    protected javafx.scene.Node render() {
+        return render(new javafx.scene.shape.Rectangle(width, height));
+    }
 
 }

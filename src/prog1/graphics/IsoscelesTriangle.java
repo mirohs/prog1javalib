@@ -19,28 +19,29 @@ import javafx.scene.paint.Color;
 
 /**
  * A triangle with two sides of equal length.
+ *
  * @author michaelrohs
  */
 class IsoscelesTriangle extends Shape {
 
-	public IsoscelesTriangle(double length, double alpha, Color color, Pen pen) {
+    public IsoscelesTriangle(ApplicationBase app, double length, double alpha, Color color, Pen pen) {
 		// 180 - 90 - a2
-		// height = Math.sin((90 - alpha / 2) * Math.PI / 180)
-		// width = 2 * Math.cos((90 - alpha / 2) * Math.PI / 180)
-		super(0, 0, color, pen);
-		double a = (90 - alpha / 2) * Math.PI / 180;
-		this.width = 2 * length * Math.cos(a);
-		this.height = length * Math.sin(a);
-	}
-	
-	@Override
-	protected javafx.scene.Node render() {
-		javafx.scene.shape.Polygon polygon = new javafx.scene.shape.Polygon();
-		polygon.getPoints().addAll(new Double[] {
-			0.0, height,
-			width, height,
-			width / 2.0, 0.0});
-		return render(polygon);
-	}
+        // height = Math.sin((90 - alpha / 2) * Math.PI / 180)
+        // width = 2 * Math.cos((90 - alpha / 2) * Math.PI / 180)
+        super(app, 0, 0, color, pen);
+        double a = (90 - alpha / 2) * Math.PI / 180;
+        this.width = 2 * length * Math.cos(a);
+        this.height = length * Math.sin(a);
+    }
+
+    @Override
+    protected javafx.scene.Node render() {
+        javafx.scene.shape.Polygon polygon = new javafx.scene.shape.Polygon();
+        polygon.getPoints().addAll(new Double[]{
+            0.0, height,
+            width, height,
+            width / 2.0, 0.0});
+        return render(polygon);
+    }
 
 }
