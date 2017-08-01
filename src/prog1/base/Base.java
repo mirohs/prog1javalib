@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Random;
 
 // javadoc prog1.base prog1.graphics prog1.functional -d doc -header 'Programming I Java Library' -footer 'version 0.7' -top '<a href="http://hci.uni-hannover.de" target="_blank"><img src="http://hci.uni-hannover.de/files/prog1lib/hcilogo.png" /></a>' -public -link http://docs.oracle.com/javase/8/javafx/api/ -link https://docs.oracle.com/javase/8/docs/api/
+// cd prog1javalib/build/classes
 // jar cf prog1javalib.jar prog1
 
 /**

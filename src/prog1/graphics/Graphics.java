@@ -46,6 +46,10 @@ public class Graphics {
         this.app = app;
     }
 
+    public Graphics() {
+        this.app = null;
+    }
+
     /**
      * Returns a color given the color name
      * (<a href="http://docs.oracle.com/javase/8/javafx/api/javafx/scene/paint/Color.html">list
@@ -1732,6 +1736,41 @@ public class Graphics {
         return above(align, sub);
     }
 
+    public Image placeImage(Image front, Image back, double x, double y, String xAlign, String yAlign) {
+        ClippedGroup g = new ClippedGroup(app);
+        g.add(back, 0, 0);
+        g.add(front, x, y);
+        if (null != xAlign) {
+            Child c = g.children.get(1);
+            switch (xAlign) {
+                case "center":
+                case "middle":
+                    c.x -= c.width / 2.0;
+                    break;
+                case "right":
+                    c.x -= c.width;
+                    break;
+            }
+        }
+        if (null != yAlign) {
+            Child c = g.children.get(1);
+            switch (yAlign) {
+                case "center":
+                case "middle":
+                    c.y -= c.height / 2.0;
+                    break;
+                case "bottom":
+                    c.y -= c.height;
+                    break;
+            }
+        }
+        return g;
+    }
+
+    public Image placeImage(Image front, Image back, double x, double y) {
+        return placeImage(front, back, x, y, null, null);
+    }
+    
     /**
      * {@code Image i = overlay(circle(12.5, "green"), circle(25, "red"));}<br>
      * <img src="./doc-files/overlay(circle(12.5,green),circle(25,red)).png" alt=""

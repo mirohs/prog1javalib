@@ -47,7 +47,7 @@ public class Button extends javafx.application.Application {
 
         // event handling with a named method:
         button.setOnMousePressed(this::onClick, "my button.");
-        
+
         app.setOnDraw(this::onDraw);
     }
 
