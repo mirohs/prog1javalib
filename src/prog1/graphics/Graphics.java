@@ -1740,8 +1740,8 @@ public class Graphics {
         ClippedGroup g = new ClippedGroup(app);
         g.add(back, 0, 0);
         g.add(front, x, y);
+        Child c = g.children.get(1);
         if (null != xAlign) {
-            Child c = g.children.get(1);
             switch (xAlign) {
                 case "center":
                 case "middle":
@@ -1751,9 +1751,10 @@ public class Graphics {
                     c.x -= c.width;
                     break;
             }
+        } else {
+            c.x -= c.width / 2.0;
         }
         if (null != yAlign) {
-            Child c = g.children.get(1);
             switch (yAlign) {
                 case "center":
                 case "middle":
@@ -1763,6 +1764,8 @@ public class Graphics {
                     c.y -= c.height;
                     break;
             }
+        } else {
+            c.y -= c.height / 2.0;
         }
         return g;
     }
