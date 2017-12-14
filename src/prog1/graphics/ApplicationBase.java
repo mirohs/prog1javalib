@@ -72,6 +72,21 @@ public class ApplicationBase {
         return ab;
     }
 
+//    public Stage stage;
+//    
+//    public static ApplicationBase start(String title, double width, double height) {
+//        ApplicationBase ab = new ApplicationBase();
+//        ab.graphics = new Graphics(ab);
+//        ab.root = new Pane();
+//        ab.scene = new Scene(ab.root, width, height);
+//
+//        ab.stage = new Stage();
+//        ab.stage.setTitle(title);
+//        ab.stage.setScene(ab.scene);
+//
+//        return ab;
+//    }
+
     public Graphics getGraphics() {
         return graphics;
     }
@@ -86,7 +101,7 @@ public class ApplicationBase {
         draw();
     }
 
-    protected void draw() {
+    public void draw() {
         if (onDraw != null) {
             root.getChildren().setAll(onDraw.apply().render());
         }
